@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Dr. Shivani's Skin Clinic | Dermatology & Aesthetics · Abids, Hyderabad</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --g1:#C9A96E;--g2:#E8D5A3;--g3:#8B6914;--g4:#F5ECD8;
+  --bg:#06050A;--bg2:#0D0B12;--bg3:#13111A;
+  --surface:rgba(255,255,255,.035);--surface2:rgba(255,255,255,.055);
+  --border:rgba(201,169,110,.15);--border2:rgba(201,169,110,.08);
+  --txt:#F0EBE0;--txt2:#A8A098;--txt3:#6A6460;
+  --wa:#25D366;--nav:72px;
+  --ease:.4s cubic-bezier(.25,.46,.45,.94);
+  --spring:.5s cubic-bezier(.34,1.56,.64,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Jost',sans-serif;background:var(--bg);color:var(--txt);overflow-x:hidden;line-height:1.6;cursor:none}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+input,select,textarea,button{font-family:inherit}
+::selection{background:rgba(201,169,110,.25);color:var(--g2)}
+
+/* ── CURSOR ──────────────────────── */
+#cur{position:fixed;pointer-events:none;z-index:9999;mix-blend-mode:normal}
+#cur-dot{position:fixed;width:5px;height:5px;background:var(--g1);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .1s}
+#cur-ring{position:fixed;width:36px;height:36px;border:1px solid rgba(201,169,110,.6);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .3s var(--ease),height .3s var(--ease),opacity .3s,border-color .3s}
+#cur-ring.hover{width:54px;height:54px;border-color:rgba(201,169,110,.3);opacity:.6}
+@media(hover:none){#cur-dot,#cur-ring{display:none}body{cursor:auto}}
+
+/* ── NOISE OVERLAY ───────────────── */
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:.028;pointer-events:none;z-index:0}
+
+/* ── AMBIENT ORBS ────────────────── */
+.orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(80px)}
+.orb1{width:600px;height:600px;background:radial-gradient(circle,rgba(201,169,110,.07) 0%,transparent 70%);top:-200px;right:-100px}
+.orb2{width:500px;height:500px;background:radial-gradient(circle,rgba(139,105,20,.05) 0%,transparent 70%);bottom:10%;left:-150px}
+
+/* ── NAV ────────────────────────── */
+#navbar{position:fixed;top:0;left:0;right:0;height:var(--nav);z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1.5rem,5vw,4rem);transition:background var(--ease),border-color var(--ease);border-bottom:1px solid transparent}
+#navbar.scrolled{background:rgba(6,5,10,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom-color:var(--border2)}
+.brand{display:flex;align-items:center;gap:1rem;cursor:pointer;flex-shrink:0}
+.brand-monogram{width:40px;height:40px;border-radius:10px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--g1);background:rgba(201,169,110,.06);flex-shrink:0;letter-spacing:.05em}
+.brand-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:500;color:var(--txt);white-space:nowrap;letter-spacing:.02em}
+.brand-sub{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--txt3);font-weight:300}
+.nav-links{display:flex;align-items:center;gap:clamp(.5rem,2vw,2rem)}
+.nav-links a{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--txt2);font-weight:400;position:relative;padding:.2rem 0;white-space:nowrap;transition:color .2s}
+.nav-links a::after{content:'';position:absolute;bottom:-1px;left:0;width:0;height:1px;background:var(--g1);transition:width .35s var(--ease)}
+.nav-links a:hover{color:var(--g2)}
+.nav-links a:hover::after{width:100%}
+.btn-nav{background:transparent;border:1px solid var(--border);color:var(--g2);padding:.42rem 1.1rem;border-radius:6px;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;transition:background var(--ease),border-color var(--ease),color .2s;white-space:nowrap;cursor:pointer}
+.btn-nav:hover{background:rgba(201,169,110,.1);border-color:rgba(201,169,110,.4);color:var(--g1)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none;z-index:10001}
+.hamburger span{display:block;width:22px;height:1px;background:var(--txt2);border-radius:2px;transition:var(--ease)}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(4px,4px)}
+.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(4px,-4px)}
+
+/* ── MOBILE MENU ─────────────────── */
+#mob-menu{position:fixed;inset:0;z-index:900;background:rgba(6,5,10,.97);backdrop-filter:blur(30px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;transform:translateX(100%);transition:transform .5s cubic-bezier(.76,0,.24,1)}
+#mob-menu.open{transform:translateX(0)}
+#mob-menu a{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:400;color:var(--txt2);transition:color .2s;letter-spacing:.02em}
+#mob-menu a:hover{color:var(--g2)}
+#mob-menu .mob-cta{margin-top:.5rem;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--g1);border:1px solid var(--border);padding:.75rem 2rem;border-radius:6px;background:none;cursor:pointer;transition:background .2s}
+#mob-menu .mob-cta:hover{background:rgba(201,169,110,.1)}
+
+/* ── HERO ────────────────────────── */
+#hero{min-height:100svh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 120% 80% at 70% 50%,rgba(201,169,110,.04) 0%,transparent 60%);pointer-events:none}
+.hero-bg-line{position:absolute;inset:0;background-image:linear-gradient(rgba(201,169,110,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(201,169,110,.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;mask-image:radial-gradient(ellipse at 60% 40%,black 20%,transparent 70%)}
+.hero-left{padding:var(--nav) clamp(1.5rem,5vw,5rem) clamp(3rem,6vh,5rem);display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:.6rem;margin-bottom:2rem;opacity:0;animation:fadeUp .8s .3s forwards}
+.live-pip{width:5px;height:5px;border-radius:50%;background:#4CAF50;box-shadow:0 0 8px rgba(76,175,80,.6);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 8px rgba(76,175,80,.6)}50%{box-shadow:0 0 16px rgba(76,175,80,.9)}}
+.eyebrow-text{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--txt3);font-weight:300}
+.hero-h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,5.5vw,5.2rem);font-weight:300;line-height:1.05;color:var(--txt);letter-spacing:-.01em;opacity:0;animation:fadeUp .9s .5s forwards}
+.hero-h1 em{font-style:italic;color:var(--g1)}
+.hero-rule{width:40px;height:1px;background:var(--g1);margin:1.8rem 0;opacity:0;animation:fadeUp .7s .7s forwards}
+.hero-desc{font-size:.93rem;line-height:1.9;color:var(--txt2);font-weight:300;max-width:400px;opacity:0;animation:fadeUp .8s .85s forwards}
+.hero-ctas{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:2.2rem;opacity:0;animation:fadeUp .8s 1s forwards}
+.btn-primary{display:inline-flex;align-items:center;gap:.55rem;background:var(--g1);color:#06050A;padding:.8rem 1.8rem;border-radius:6px;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500;border:none;cursor:pointer;transition:background .25s,transform .25s,box-shadow .25s;white-space:nowrap}
+.btn-primary:hover{background:var(--g2);transform:translateY(-2px);box-shadow:0 10px 30px rgba(201,169,110,.25)}
+.btn-outline{display:inline-flex;align-items:center;gap:.55rem;border:1px solid var(--border);color:var(--txt2);background:transparent;padding:.8rem 1.8rem;border-radius:6px;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:400;cursor:pointer;transition:border-color .2s,color .2s,transform .25s;white-space:nowrap}
+.btn-outline:hover{border-color:rgba(201,169,110,.4);color:var(--g2);transform:translateY(-2px)}
+.hero-badges{display:flex;flex-wrap:wrap;gap:.65rem;margin-top:2.5rem;opacity:0;animation:fadeUp .8s 1.1s forwards}
+.hbadge{display:flex;align-items:center;gap:.4rem;border:1px solid var(--border2);border-radius:4px;padding:.38rem .75rem;font-size:.67rem;color:var(--txt3);background:var(--surface);letter-spacing:.06em}
+.hbadge strong{color:var(--txt2);font-weight:400}
+
+/* HERO RIGHT */
+.hero-right{position:relative;display:flex;align-items:flex-end;justify-content:center;overflow:hidden;padding-top:var(--nav)}
+.hero-right-bg{position:absolute;inset:0;background:linear-gradient(160deg,rgba(201,169,110,.04) 0%,transparent 60%)}
+.hero-img-wrap{position:relative;width:min(380px,88%);height:min(520px,78vh);margin-top:3rem;z-index:2}
+.hero-img-frame{width:100%;height:100%;border-radius:16px 16px 0 0;overflow:hidden;border:1px solid var(--border);border-bottom:none;background:linear-gradient(170deg,#1A1620 0%,#100F15 100%);display:flex;align-items:center;justify-content:center}
+.hero-img-frame img{width:100%;height:100%;object-fit:cover;object-position:top}
+.doc-ph{display:flex;flex-direction:column;align-items:center;gap:1rem;color:var(--txt3);padding:2rem}
+.doc-ph-ico{font-size:4rem;opacity:.2}
+.doc-ph-text{font-size:.75rem;text-align:center;line-height:1.6;opacity:.5}
+.hero-doc-card{position:absolute;bottom:-1px;left:0;right:0;background:rgba(13,11,18,.95);backdrop-filter:blur(16px);border-top:1px solid var(--border);padding:1rem 1.2rem;display:flex;align-items:center;justify-content:space-between}
+.hdc-name{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:500;color:var(--txt);letter-spacing:.02em}
+.hdc-deg{font-size:.63rem;color:var(--txt3);margin-top:.1rem;letter-spacing:.06em}
+.hdc-avail{display:flex;align-items:center;gap:.35rem;font-size:.63rem;color:#4CAF50;letter-spacing:.08em}
+.float-stat{position:absolute;z-index:4;background:rgba(13,11,18,.9);border:1px solid var(--border);border-radius:10px;padding:.7rem 1rem;backdrop-filter:blur(12px);animation:floatY 5s ease-in-out infinite}
+.fs1{top:22%;left:-60px;animation-delay:0s}
+.fs2{top:52%;right:-50px;animation-delay:2.5s}
+.fst-val{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--g2);line-height:1}
+.fst-lbl{font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--txt3);margin-top:.2rem}
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+
+/* ── TICKER ───────────────────────── */
+.ticker{background:rgba(13,11,18,.6);border-top:1px solid var(--border2);border-bottom:1px solid var(--border2);overflow:hidden;padding:.7rem 0;display:flex;align-items:center}
+.ticker-track{display:flex;animation:ticker 35s linear infinite;white-space:nowrap;flex-shrink:0}
+.ticker-track:hover{animation-play-state:paused}
+.ti{display:inline-flex;align-items:center;gap:1.5rem;padding:0 2rem;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--txt3)}
+.ti-dot{width:3px;height:3px;border-radius:50%;background:var(--g1);opacity:.5;flex-shrink:0}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── STATS ────────────────────────── */
+#stats{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--border2)}
+.stat-cell{padding:2.8rem 1.5rem;text-align:center;border-right:1px solid var(--border2);position:relative;overflow:hidden;transition:background .3s}
+.stat-cell:last-child{border-right:none}
+.stat-cell::before{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%) scaleX(0);width:40px;height:1px;background:var(--g1);transition:transform .4s var(--ease)}
+.stat-cell:hover{background:rgba(201,169,110,.03)}
+.stat-cell:hover::before{transform:translateX(-50%) scaleX(1)}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:300;color:var(--g2);line-height:1}
+.stat-num sup{font-size:.5em;vertical-align:super;color:var(--g1)}
+.stat-lbl{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--txt3);margin-top:.5rem;font-weight:300}
+
+/* ── SECTION LAYOUT ──────────────── */
+.section{padding:clamp(5rem,9vw,8rem) clamp(1.5rem,5vw,4.5rem);position:relative;z-index:1}
+.sec-label{display:flex;align-items:center;gap:.8rem;font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--g3);margin-bottom:1rem}
+.sec-label::before{content:'';width:20px;height:1px;background:var(--g3);flex-shrink:0}
+.sec-h{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:300;line-height:1.15;color:var(--txt);letter-spacing:-.01em}
+.sec-h em{font-style:italic;color:var(--g1)}
+.sec-p{margin-top:.8rem;font-size:.9rem;line-height:1.9;color:var(--txt2);font-weight:300}
+
+/* ── REVEAL ───────────────────────── */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rv-l{opacity:0;transform:translateX(-28px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rv-r{opacity:0;transform:translateX(28px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rv.vis,.rv-l.vis,.rv-r.vis{opacity:1;transform:none}
+
+/* ── ABOUT ────────────────────────── */
+#about{background:var(--bg)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(3rem,5vw,6rem);align-items:start;margin-top:3.5rem}
+.creds{display:flex;flex-direction:column;gap:.55rem;margin-top:1.8rem}
+.cred{display:flex;align-items:flex-start;gap:.8rem;padding:.8rem 1rem;background:var(--surface);border:1px solid var(--border2);border-radius:8px;transition:border-color .25s,background .25s,transform .25s}
+.cred:hover{border-color:var(--border);background:var(--surface2);transform:translateX(4px)}
+.cred-ico{font-size:.9rem;flex-shrink:0;margin-top:.05rem;width:22px;text-align:center}
+.cred-label{font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:var(--g3);display:block;margin-bottom:.18rem}
+.cred-val{font-size:.82rem;color:var(--txt2);font-weight:300}
+.hours-panel{margin-top:1.5rem;background:var(--surface);border:1px solid var(--border2);border-radius:12px;padding:1.5rem;overflow:hidden}
+.hours-title{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--g1);margin-bottom:1rem}
+.h-row{display:flex;justify-content:space-between;align-items:center;padding:.45rem 0;border-bottom:1px solid var(--border2);font-size:.8rem}
+.h-row:last-child{border-bottom:none}
+.h-row span{color:var(--txt3);font-weight:300}
+.h-row strong{color:var(--txt2);font-weight:400}
+.fee-chip{background:rgba(201,169,110,.12);border:1px solid rgba(201,169,110,.25);color:var(--g2);border-radius:4px;padding:.12rem .65rem;font-size:.68rem}
+.about-visual{display:flex;flex-direction:column;gap:1.2rem}
+.about-img{width:100%;aspect-ratio:4/3.2;border-radius:12px;background:var(--surface);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+.about-img img{width:100%;height:100%;object-fit:cover}
+.img-over{position:absolute;bottom:1rem;left:1rem;background:rgba(6,5,10,.8);border:1px solid var(--border);border-radius:8px;padding:.55rem .9rem;backdrop-filter:blur(10px)}
+.img-over-name{font-family:'Cormorant Garamond',serif;font-size:.95rem;color:var(--txt);letter-spacing:.03em}
+.img-over-title{font-size:.63rem;color:var(--txt3);margin-top:.08rem;letter-spacing:.08em}
+.mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+.mini-cell{background:var(--surface);border:1px solid var(--border2);border-radius:10px;padding:1.2rem;text-align:center;transition:border-color .25s,transform .25s}
+.mini-cell:hover{border-color:var(--border);transform:translateY(-3px)}
+.mc-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--g1)}
+.mc-lbl{font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--txt3);margin-top:.2rem}
+
+/* ── SERVICES ─────────────────────── */
+#services{background:var(--bg2)}
+.svc-header{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;flex-wrap:wrap;margin-bottom:3rem}
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.9rem}
+.svc-card{background:var(--surface);border:1px solid var(--border2);border-radius:12px;padding:1.8rem 1.6rem;position:relative;overflow:hidden;transition:border-color .3s,background .3s,transform .3s;cursor:default}
+.svc-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,169,110,.06) 0%,transparent 60%);opacity:0;transition:opacity .4s}
+.svc-card:hover{border-color:rgba(201,169,110,.3);background:rgba(201,169,110,.03);transform:translateY(-4px)}
+.svc-card:hover::before{opacity:1}
+.svc-ico{width:44px;height:44px;border-radius:10px;background:rgba(201,169,110,.08);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:1.1rem;transition:transform .3s}
+.svc-card:hover .svc-ico{transform:scale(1.08)}
+.svc-name{font-size:.92rem;font-weight:500;color:var(--txt);margin-bottom:.4rem;letter-spacing:.02em}
+.svc-desc{font-size:.78rem;line-height:1.7;color:var(--txt2);font-weight:300}
+.svc-chip{display:inline-block;margin-top:.9rem;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--g3);padding:.15rem .55rem;border-radius:4px;border:1px solid rgba(139,105,20,.3);background:rgba(139,105,20,.08)}
+
+/* ── TREATMENTS ────────────────────── */
+#treatments{background:var(--bg)}
+.t-tabs{display:flex;flex-wrap:wrap;gap:.5rem;margin:2.5rem 0 3rem}
+.t-tab{padding:.48rem 1.15rem;border-radius:4px;border:1px solid var(--border2);color:var(--txt3);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all .2s;background:transparent;white-space:nowrap;font-family:'Jost',sans-serif}
+.t-tab:hover{border-color:var(--border);color:var(--txt2)}
+.t-tab.on{background:var(--g1);border-color:var(--g1);color:#06050A;font-weight:500}
+.t-layout{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.t-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3vw,2.3rem);font-weight:300;color:var(--txt);line-height:1.2;margin-bottom:.9rem;letter-spacing:-.01em}
+.t-desc{font-size:.85rem;line-height:1.9;color:var(--txt2);font-weight:300;margin-bottom:1.6rem}
+.t-feats{display:flex;flex-direction:column;gap:.5rem}
+.t-feat{display:flex;align-items:flex-start;gap:.65rem;font-size:.8rem;color:var(--txt2);font-weight:300}
+.t-feat::before{content:'—';color:var(--g1);flex-shrink:0;margin-top:.05rem}
+.t-vis{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+.t-box{aspect-ratio:1;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;background:var(--surface);border:1px solid var(--border2);font-size:1.8rem;transition:background .3s,border-color .3s,transform .3s;padding:.5rem;text-align:center}
+.t-box-lbl{font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--txt3);line-height:1.3}
+.t-box:hover{background:rgba(201,169,110,.06);border-color:var(--border);transform:scale(1.04)}
+.t-box.hi{background:rgba(201,169,110,.06);border-color:rgba(201,169,110,.2)}
+
+/* ── CONDITIONS ───────────────────── */
+#conditions{background:var(--bg2)}
+.cond-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:.85rem;margin-top:3rem}
+.cond-card{background:var(--surface);border:1px solid var(--border2);border-radius:12px;padding:1.5rem 1.2rem;text-align:center;transition:border-color .3s,transform .3s,background .3s}
+.cond-card:hover{border-color:rgba(201,169,110,.3);background:rgba(201,169,110,.03);transform:translateY(-4px)}
+.cond-emoji{font-size:1.8rem;margin-bottom:.7rem;display:block}
+.cond-name{font-size:.85rem;font-weight:500;color:var(--txt);margin-bottom:.3rem;letter-spacing:.02em}
+.cond-sub{font-size:.72rem;color:var(--txt3);line-height:1.55;font-weight:300}
+
+/* ── WHY ──────────────────────────── */
+#why{background:var(--bg)}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:.9rem;margin-top:3rem}
+.why-card{background:var(--surface);border:1px solid var(--border2);border-radius:12px;padding:1.6rem 1.4rem;transition:border-color .3s,transform .3s,background .3s;position:relative;overflow:hidden}
+.why-card::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--g1),transparent);transform:scaleX(0);transition:transform .4s var(--ease)}
+.why-card:hover{border-color:rgba(201,169,110,.25);background:rgba(201,169,110,.025);transform:translateY(-4px)}
+.why-card:hover::after{transform:scaleX(1)}
+.wc-ico{font-size:1.6rem;margin-bottom:.9rem;display:block}
+.wc-title{font-size:.88rem;font-weight:500;color:var(--txt);margin-bottom:.35rem;letter-spacing:.02em}
+.wc-text{font-size:.78rem;line-height:1.7;color:var(--txt2);font-weight:300}
+
+/* ── BEFORE/AFTER ─────────────────── */
+#gallery{background:var(--bg2)}
+.gallery-intro{display:grid;grid-template-columns:1.2fr 1fr;gap:4rem;align-items:center;margin-bottom:3.5rem}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.gallery-card{background:var(--surface);border:1px solid var(--border2);border-radius:12px;overflow:hidden;transition:border-color .3s,transform .3s}
+.gallery-card:hover{border-color:rgba(201,169,110,.3);transform:translateY(-4px)}
+.gallery-img{aspect-ratio:3/4;background:linear-gradient(170deg,#1A1620,#0D0B12);display:flex;align-items:center;justify-content:center;color:var(--txt3);font-size:.75rem;letter-spacing:.1em;position:relative;overflow:hidden}
+.gallery-img-ph{display:flex;flex-direction:column;align-items:center;gap:.8rem;opacity:.3}
+.gallery-img-ph span{font-size:2rem}
+.gallery-info{padding:1.1rem 1.2rem;border-top:1px solid var(--border2)}
+.gallery-condition{font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--g3);margin-bottom:.3rem}
+.gallery-result{font-size:.82rem;color:var(--txt2);font-weight:300}
+.gallery-sessions{font-size:.68rem;color:var(--txt3);margin-top:.2rem}
+
+/* ── TESTIMONIALS ──────────────────── */
+#testimonials{background:var(--bg)}
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:.9rem;margin-top:3rem}
+.testi-card{background:var(--surface);border:1px solid var(--border2);border-radius:12px;padding:1.8rem;transition:border-color .3s,transform .3s}
+.testi-card:hover{border-color:rgba(201,169,110,.25);transform:translateY(-4px)}
+.t-stars{font-size:.75rem;color:var(--g1);letter-spacing:.1em;margin-bottom:.8rem}
+.t-qmark{font-family:'Cormorant Garamond',serif;font-size:3.5rem;line-height:.5;color:var(--g1);opacity:.4;display:block;margin-bottom:.6rem}
+.t-text{font-size:.83rem;line-height:1.8;color:var(--txt2);font-weight:300;margin-bottom:1.4rem}
+.t-author{display:flex;align-items:center;gap:.8rem}
+.t-ava{width:34px;height:34px;border-radius:50%;background:rgba(201,169,110,.1);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0}
+.t-name{font-size:.84rem;color:var(--txt);font-weight:400}
+.t-loc{font-size:.68rem;color:var(--txt3);margin-top:.08rem}
+
+/* ── GOOGLE REVIEWS WIDGET ─────────── */
+#reviews-banner{background:var(--bg2);border-top:1px solid var(--border2);border-bottom:1px solid var(--border2);padding:1.8rem clamp(1.5rem,5vw,4.5rem);display:flex;align-items:center;gap:2rem;flex-wrap:wrap;justify-content:space-between}
+.rb-left{display:flex;align-items:center;gap:1.5rem}
+.rb-icon{width:48px;height:48px;background:var(--surface);border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0}
+.rb-rating{font-family:'Cormorant Garamond',serif;font-size:2.4rem;color:var(--g2);line-height:1}
+.rb-stars{font-size:.8rem;color:var(--g1);display:block;margin-top:.1rem}
+.rb-count{font-size:.72rem;color:var(--txt3);margin-top:.15rem;letter-spacing:.06em}
+.rb-right{display:flex;gap:1.5rem;flex-wrap:wrap}
+.review-mini{background:var(--surface);border:1px solid var(--border2);border-radius:10px;padding:.9rem 1.1rem;max-width:240px;transition:border-color .2s}
+.review-mini:hover{border-color:var(--border)}
+.rm-stars{font-size:.65rem;color:var(--g1);margin-bottom:.35rem}
+.rm-text{font-size:.75rem;color:var(--txt2);line-height:1.6;font-weight:300;font-style:italic}
+.rm-author{font-size:.65rem;color:var(--txt3);margin-top:.4rem}
+
+/* ── FAQ ───────────────────────────── */
+#faq{background:var(--bg)}
+.faq-layout{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-top:3.5rem}
+.faq-list{display:flex;flex-direction:column;gap:.55rem}
+.faq-item{background:var(--surface);border:1px solid var(--border2);border-radius:10px;overflow:hidden;transition:border-color .25s}
+.faq-item.open{border-color:rgba(201,169,110,.3)}
+.faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 1.2rem;background:none;border:none;cursor:pointer;text-align:left;font-size:.85rem;font-weight:400;color:var(--txt2);font-family:'Jost',sans-serif;transition:color .2s;letter-spacing:.02em}
+.faq-item.open .faq-q{color:var(--g2)}
+.faq-arr{width:18px;height:18px;flex-shrink:0;color:var(--txt3);transition:transform .35s var(--ease),color .2s;display:flex;align-items:center;justify-content:center;font-size:.65rem}
+.faq-item.open .faq-arr{transform:rotate(180deg);color:var(--g1)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(.4,0,.2,1)}
+.faq-item.open .faq-a{max-height:220px}
+.faq-a-in{padding:0 1.2rem 1rem;font-size:.8rem;line-height:1.8;color:var(--txt3);font-weight:300}
+.faq-aside{background:var(--surface);border:1px solid var(--border2);border-radius:12px;padding:2.5rem;position:sticky;top:calc(var(--nav) + 1.5rem)}
+.fa-title{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;color:var(--txt);margin-bottom:.7rem;letter-spacing:-.01em}
+.fa-text{font-size:.82rem;line-height:1.85;color:var(--txt2);font-weight:300;margin-bottom:1.5rem}
+.btn-wa{display:inline-flex;align-items:center;gap:.55rem;background:var(--wa);color:#fff;padding:.75rem 1.4rem;border-radius:6px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;border:none;cursor:pointer;transition:background .2s,transform .2s;width:100%;justify-content:center}
+.btn-wa:hover{background:#1da851;transform:translateY(-1px)}
+.fa-hours{border-top:1px solid var(--border2);padding-top:1.2rem;margin-top:1.4rem}
+.fa-hours-title{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--g3);margin-bottom:.65rem}
+.fa-hours-row{font-size:.8rem;color:var(--txt3);line-height:2;font-weight:300}
+
+/* ── CONTACT ───────────────────────── */
+#contact{background:var(--bg2)}
+.contact-layout{display:grid;grid-template-columns:1fr 1.3fr;gap:clamp(2rem,4vw,5rem);margin-top:3.5rem;align-items:start}
+.ci-list{display:flex;flex-direction:column;gap:.75rem}
+.ci{display:flex;align-items:flex-start;gap:.9rem;padding:1rem 1.1rem;background:var(--surface);border:1px solid var(--border2);border-radius:10px;transition:border-color .2s}
+.ci:hover{border-color:var(--border)}
+.ci-ico{width:36px;height:36px;border-radius:8px;flex-shrink:0;background:rgba(201,169,110,.08);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:.9rem}
+.ci-label{font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:var(--g3);display:block;margin-bottom:.18rem}
+.ci-val{font-size:.82rem;color:var(--txt2);line-height:1.6;font-weight:300}
+.wa-big{display:flex;align-items:center;justify-content:center;gap:.65rem;background:var(--wa);color:#fff;padding:1rem;border-radius:8px;font-size:.78rem;font-weight:500;border:none;cursor:pointer;transition:background .2s,transform .2s;letter-spacing:.08em;text-transform:uppercase;width:100%;margin-top:.3rem}
+.wa-big:hover{background:#1da851;transform:translateY(-2px)}
+.form-panel{background:var(--surface);border:1px solid var(--border2);border-radius:12px;padding:2rem}
+.form-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:var(--txt);margin-bottom:1.6rem;letter-spacing:-.01em}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+.fg{display:flex;flex-direction:column;gap:.4rem}
+.fg.full{grid-column:1/-1}
+.fg label{font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--txt3)}
+.fg input,.fg select,.fg textarea{background:rgba(255,255,255,.04);border:1px solid var(--border2);border-radius:6px;padding:.72rem .95rem;color:var(--txt);font-size:.84rem;outline:none;width:100%;transition:border-color .2s,background .2s;-webkit-appearance:none;appearance:none;font-family:'Jost',sans-serif;font-weight:300}
+.fg input::placeholder,.fg textarea::placeholder{color:var(--txt3)}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:rgba(201,169,110,.4);background:rgba(201,169,110,.04)}
+.fg select option{background:var(--bg2);color:var(--txt)}
+.fg textarea{resize:vertical;min-height:90px}
+.btn-submit{grid-column:1/-1;display:flex;align-items:center;justify-content:center;gap:.6rem;background:var(--g1);color:#06050A;padding:.9rem;border-radius:6px;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;border:none;cursor:pointer;transition:background .2s,transform .2s;margin-top:.3rem;font-family:'Jost',sans-serif}
+.btn-submit:hover{background:var(--g2);transform:translateY(-1px)}
+.form-note{grid-column:1/-1;font-size:.65rem;color:var(--txt3);text-align:center;margin-top:.3rem;font-weight:300;letter-spacing:.04em}
+#form-success{display:none;text-align:center;padding:3rem 1.5rem}
+#form-success .fs-ico{font-size:2.5rem;margin-bottom:1rem}
+#form-success h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;color:var(--txt);margin-bottom:.5rem}
+#form-success p{font-size:.83rem;color:var(--txt3);line-height:1.7;font-weight:300}
+
+/* ── MAP ───────────────────────────── */
+#map-section{background:var(--bg)}
+.map-layout{display:grid;grid-template-columns:1fr 1.4fr;gap:3rem;align-items:start;margin-top:3rem}
+.map-cards{display:flex;flex-direction:column;gap:.8rem}
+.map-card{background:var(--surface);border:1px solid var(--border2);border-radius:10px;padding:1.1rem 1.2rem;display:flex;align-items:flex-start;gap:.9rem;transition:border-color .2s}
+.map-card:hover{border-color:var(--border)}
+.mc-ico{width:34px;height:34px;border-radius:8px;flex-shrink:0;background:rgba(201,169,110,.08);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:.85rem}
+.mc-label{font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:var(--g3);margin-bottom:.18rem;display:block}
+.mc-val{font-size:.82rem;color:var(--txt2);line-height:1.55;font-weight:300}
+.btn-dir{display:inline-flex;align-items:center;gap:.5rem;background:var(--surface);border:1px solid var(--border);color:var(--txt2);padding:.75rem 1.4rem;border-radius:6px;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:border-color .2s,color .2s,background .2s;width:100%;justify-content:center;text-decoration:none;font-family:'Jost',sans-serif;margin-top:.3rem}
+.btn-dir:hover{border-color:rgba(201,169,110,.4);color:var(--g2);background:rgba(201,169,110,.05)}
+.map-embed{border-radius:14px;overflow:hidden;border:1px solid var(--border2);height:440px;filter:contrast(1.1) saturate(0.3) brightness(0.7)}
+.map-embed iframe{width:100%;height:100%;border:none;display:block}
+
+/* ── FOOTER ────────────────────────── */
+footer{background:var(--bg);border-top:1px solid var(--border2);padding:4rem clamp(1.5rem,5vw,4.5rem) 2rem}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid var(--border2)}
+.foot-brand-name{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--txt);letter-spacing:.02em}
+.foot-brand-sub{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--g3);margin-top:.15rem}
+.foot-brand-p{font-size:.78rem;line-height:1.8;color:var(--txt3);max-width:260px;margin-top:.7rem;font-weight:300}
+.foot-socials{display:flex;gap:.55rem;margin-top:1.3rem}
+.foot-soc{width:32px;height:32px;border-radius:7px;background:var(--surface);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:.8rem;transition:border-color .2s,background .2s;cursor:pointer}
+.foot-soc:hover{background:rgba(201,169,110,.1);border-color:var(--border)}
+.foot-col h4{font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--g3);margin-bottom:1.1rem}
+.foot-col ul{display:flex;flex-direction:column;gap:.6rem}
+.foot-col ul li a{font-size:.78rem;color:var(--txt3);transition:color .2s;font-weight:300}
+.foot-col ul li a:hover{color:var(--g2)}
+.foot-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.8rem;padding-top:1.5rem}
+.foot-bottom p{font-size:.68rem;color:var(--txt3);font-weight:300}
+
+/* ── FABS ──────────────────────────── */
+.fab-group{position:fixed;bottom:1.8rem;right:1.8rem;display:flex;flex-direction:column;gap:.6rem;align-items:flex-end;z-index:800}
+.fab{display:flex;align-items:center;gap:.5rem;border:none;border-radius:100px;cursor:pointer;font-size:.68rem;letter-spacing:.12em;font-family:'Jost',sans-serif;font-weight:500;text-transform:uppercase;padding:.65rem 1.2rem;transition:transform .2s,box-shadow .2s;white-space:nowrap;box-shadow:0 4px 20px rgba(0,0,0,.4)}
+.fab:hover{transform:translateY(-2px)}
+.fab-wa{background:var(--wa);color:#fff;box-shadow:0 4px 20px rgba(37,211,102,.2)}
+.fab-wa:hover{box-shadow:0 8px 30px rgba(37,211,102,.3)}
+.fab-book{background:var(--g1);color:#06050A;box-shadow:0 4px 20px rgba(201,169,110,.2)}
+.fab-book:hover{background:var(--g2);box-shadow:0 8px 30px rgba(201,169,110,.3)}
+
+/* ── ANIM ───────────────────────────── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── RESPONSIVE ─────────────────────── */
+@media(max-width:1100px){
+  #hero{grid-template-columns:1fr}
+  .hero-right{display:none}
+  .hero-left{min-height:100svh;padding-top:calc(var(--nav) + 3rem)}
+  .float-stat{display:none}
+  #stats{grid-template-columns:repeat(2,1fr)}
+  .stat-cell:nth-child(2){border-right:none}
+  .stat-cell:nth-child(3){border-top:1px solid var(--border2)}
+  .about-grid{grid-template-columns:1fr}
+  .t-layout{grid-template-columns:1fr}
+  .t-vis{display:none}
+  .faq-layout{grid-template-columns:1fr}
+  .faq-aside{position:static}
+  .contact-layout{grid-template-columns:1fr}
+  .map-layout{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr 1fr;gap:2rem}
+  .foot-brand{grid-column:1/-1}
+  .gallery-intro{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:repeat(2,1fr)}
+  .rb-right{display:none}
+}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .testi-grid{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr}
+  .map-embed{height:280px}
+  .fab-group{bottom:1rem;right:1rem}
+  .fab .fab-lbl{display:none}
+  .fab{padding:.7rem}
+  .form-grid{grid-template-columns:1fr}
+  .fg.full,.btn-submit,.form-note{grid-column:auto}
+  .hero-ctas{flex-direction:column;align-items:flex-start}
+  .btn-primary,.btn-outline{width:100%;justify-content:center}
+  .gallery-grid{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+  #stats{grid-template-columns:1fr 1fr}
+  .cond-grid{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+
+<!-- AMBIENT ORBS -->
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+
+<!-- CURSOR -->
+<div id="cur-dot"></div>
+<div id="cur-ring"></div>
+
+<!-- MOBILE MENU -->
+<div id="mob-menu">
+  <a href="#about" onclick="closeMob()">About</a>
+  <a href="#services" onclick="closeMob()">Services</a>
+  <a href="#treatments" onclick="closeMob()">Treatments</a>
+  <a href="#conditions" onclick="closeMob()">Conditions</a>
+  <a href="#testimonials" onclick="closeMob()">Reviews</a>
+  <a href="#faq" onclick="closeMob()">FAQ</a>
+  <a href="#map-section" onclick="closeMob()">Location</a>
+  <button class="mob-cta" onclick="closeMob();goTo('#contact')">Book Appointment</button>
+</div>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="brand" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <div class="brand-monogram">S</div>
+    <div>
+      <div class="brand-name">Dr. Shivani's Skin Clinic</div>
+      <div class="brand-sub">Dermatology & Aesthetics · Abids, Hyderabad</div>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#treatments">Treatments</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#map-section">Location</a></li>
+    <li><a href="#contact"><button class="btn-nav">Book Now</button></a></li>
+  </ul>
+  <button class="hamburger" id="ham" aria-label="Toggle menu" onclick="toggleMob()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-bg-line"></div>
+  <div class="hero-left">
+    <div class="hero-eyebrow">
+      <span class="live-pip"></span>
+      <span class="eyebrow-text">Accepting New Patients · Abids, Hyderabad</span>
+    </div>
+    <h1 class="hero-h1">Reveal Your<br><em>Healthiest</em><br>Skin Ever</h1>
+    <div class="hero-rule"></div>
+    <p class="hero-desc">Premium dermatology and aesthetic medicine by Dr. Shivani Katti — MD Dermatologist with Fellowship training in Aesthetic Medicine & Cosmetology.</p>
+    <div class="hero-ctas">
+      <button class="btn-primary" onclick="goTo('#contact')">Book Consultation →</button>
+      <button class="btn-outline" onclick="goTo('#services')">Explore Services</button>
+    </div>
+    <div class="hero-badges">
+      <div class="hbadge">🎓 <strong>MBBS · MD (DVL)</strong></div>
+      <div class="hbadge">💎 <strong>Fellowship Cosmetology</strong></div>
+      <div class="hbadge">📍 <strong>Abids, Hyderabad</strong></div>
+      <div class="hbadge">₹ <strong>600 Consultation</strong></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-right-bg"></div>
+    <div class="hero-img-wrap">
+      <div class="hero-img-frame">
+        <div class="doc-ph">
+          <div class="doc-ph-ico">👩‍⚕️</div>
+          <div class="doc-ph-text">Add Doctor Photo<br><code style="font-size:.65rem;background:rgba(255,255,255,.06);padding:.15rem .4rem;border-radius:3px">&lt;img src="photo.jpg"&gt;</code></div>
+        </div>
+      </div>
+      <div class="hero-doc-card">
+        <div>
+          <div class="hdc-name">Dr. Shivani Katti</div>
+          <div class="hdc-deg">MD Dermatologist · Fellowship Aesthetic Medicine</div>
+        </div>
+        <div class="hdc-avail"><span class="live-pip" style="width:5px;height:5px"></span> Available Today</div>
+      </div>
+    </div>
+    <div class="float-stat fs1"><div class="fst-val">500+</div><div class="fst-lbl">Patients</div></div>
+    <div class="float-stat fs2"><div class="fst-val">5.0 ★</div><div class="fst-lbl">Rating</div></div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <div class="ti">Acne & Scars<span class="ti-dot"></span></div>
+    <div class="ti">Laser Therapy<span class="ti-dot"></span></div>
+    <div class="ti">Skin Rejuvenation<span class="ti-dot"></span></div>
+    <div class="ti">Vitiligo<span class="ti-dot"></span></div>
+    <div class="ti">Melasma Care<span class="ti-dot"></span></div>
+    <div class="ti">Chemical Peels<span class="ti-dot"></span></div>
+    <div class="ti">Botox & Fillers<span class="ti-dot"></span></div>
+    <div class="ti">PRP Therapy<span class="ti-dot"></span></div>
+    <div class="ti">Eczema & Psoriasis<span class="ti-dot"></span></div>
+    <div class="ti">Anti-Ageing<span class="ti-dot"></span></div>
+    <div class="ti">Hair Loss<span class="ti-dot"></span></div>
+    <div class="ti">Acne & Scars<span class="ti-dot"></span></div>
+    <div class="ti">Laser Therapy<span class="ti-dot"></span></div>
+    <div class="ti">Skin Rejuvenation<span class="ti-dot"></span></div>
+    <div class="ti">Vitiligo<span class="ti-dot"></span></div>
+    <div class="ti">Melasma Care<span class="ti-dot"></span></div>
+    <div class="ti">Chemical Peels<span class="ti-dot"></span></div>
+    <div class="ti">Botox & Fillers<span class="ti-dot"></span></div>
+    <div class="ti">PRP Therapy<span class="ti-dot"></span></div>
+    <div class="ti">Eczema & Psoriasis<span class="ti-dot"></span></div>
+    <div class="ti">Anti-Ageing<span class="ti-dot"></span></div>
+    <div class="ti">Hair Loss<span class="ti-dot"></span></div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div id="stats">
+  <div class="stat-cell rv"><div class="stat-num" data-target="500">0<sup>+</sup></div><div class="stat-lbl">Happy Patients</div></div>
+  <div class="stat-cell rv" style="transition-delay:.08s"><div class="stat-num" data-target="15">0<sup>+</sup></div><div class="stat-lbl">Treatments Offered</div></div>
+  <div class="stat-cell rv" style="transition-delay:.16s"><div class="stat-num" data-target="6">0<sup>+</sup></div><div class="stat-lbl">Days a Week</div></div>
+  <div class="stat-cell rv" style="transition-delay:.24s"><div class="stat-num">5.0<sup>★</sup></div><div class="stat-lbl">Google Rating</div></div>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="section">
+  <div class="rv">
+    <div class="sec-label">About the Doctor</div>
+    <h2 class="sec-h">Expert Care by a <em>Certified</em> Dermatologist</h2>
+  </div>
+  <div class="about-grid">
+    <div class="rv-l">
+      <p class="sec-p">Dr. Shivani Katti is a specialist dermatologist practising in Abids, Hyderabad. With advanced post-graduate qualifications and a fellowship in aesthetic medicine, she delivers evidence-based, personalised treatments that address both medical skin conditions and cosmetic concerns with a compassionate touch.</p>
+      <div class="creds">
+        <div class="cred"><span class="cred-ico">🎓</span><div><span class="cred-label">Qualification</span><span class="cred-val">MBBS, MD – Dermatology, Venereology & Leprology (DVL)</span></div></div>
+        <div class="cred"><span class="cred-ico">💎</span><div><span class="cred-label">Fellowship</span><span class="cred-val">Aesthetic Medicine & Cosmetology</span></div></div>
+        <div class="cred"><span class="cred-ico">✏️</span><div><span class="cred-label">Certification</span><span class="cred-val">Permanent Make-Up Artist (PMUA)</span></div></div>
+        <div class="cred"><span class="cred-ico">📍</span><div><span class="cred-label">Location</span><span class="cred-val">5-8-19, Fateh Sultan Lane, Mahesh Nagar, Abids, Hyderabad</span></div></div>
+      </div>
+      <div class="hours-panel">
+        <div class="hours-title">Clinic Hours</div>
+        <div class="h-row"><span>Monday – Saturday (Morning)</span><strong>10:00 AM – 2:00 PM</strong></div>
+        <div class="h-row"><span>Monday – Saturday (Evening)</span><strong>4:00 PM – 6:00 PM</strong></div>
+        <div class="h-row"><span>Sunday</span><strong style="color:var(--txt3)">Closed</strong></div>
+        <div class="h-row"><span>Consultation Fee</span><span class="fee-chip">₹600</span></div>
+      </div>
+    </div>
+    <div class="about-visual rv-r">
+      <div class="about-img">
+        <div class="doc-ph">
+          <div class="doc-ph-ico">🏥</div>
+          <div class="doc-ph-text">Clinic / Doctor Photo<br><span style="font-size:.68rem">Add image here</span></div>
+        </div>
+        <div class="img-over">
+          <div class="img-over-name">Dr. Shivani Katti</div>
+          <div class="img-over-title">MD Dermatologist · Hyderabad</div>
+        </div>
+      </div>
+      <div class="mini-grid">
+        <div class="mini-cell"><div class="mc-num">500+</div><div class="mc-lbl">Patients</div></div>
+        <div class="mini-cell"><div class="mc-num">5 ★</div><div class="mc-lbl">Rating</div></div>
+        <div class="mini-cell"><div class="mc-num">15+</div><div class="mc-lbl">Treatments</div></div>
+        <div class="mini-cell"><div class="mc-num">₹600</div><div class="mc-lbl">Consult Fee</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="section">
+  <div class="svc-header rv">
+    <div>
+      <div class="sec-label">What We Offer</div>
+      <h2 class="sec-h">Comprehensive <em>Skin</em> Services</h2>
+    </div>
+    <button class="btn-primary" onclick="goTo('#contact')">Book a Session →</button>
+  </div>
+  <div class="svc-grid">
+    <div class="svc-card rv" style="transition-delay:.00s"><div class="svc-ico">🧴</div><div class="svc-name">Acne & Scar Treatment</div><div class="svc-desc">Advanced protocols for active acne, post-inflammatory marks, and deep scarring using evidence-based solutions.</div><div class="svc-chip">Medical + Cosmetic</div></div>
+    <div class="svc-card rv" style="transition-delay:.05s"><div class="svc-ico">🌿</div><div class="svc-name">Eczema & Dermatitis</div><div class="svc-desc">Customised management plans to control chronic inflammation and restore long-term skin barrier function.</div><div class="svc-chip">Medical</div></div>
+    <div class="svc-card rv" style="transition-delay:.10s"><div class="svc-ico">🔬</div><div class="svc-name">Psoriasis Management</div><div class="svc-desc">Modern regimens including topicals, phototherapy guidance, and systemic therapy referrals where needed.</div><div class="svc-chip">Medical</div></div>
+    <div class="svc-card rv" style="transition-delay:.15s"><div class="svc-ico">🌸</div><div class="svc-name">Melasma & Pigmentation</div><div class="svc-desc">Targeted depigmentation using chemical peels, laser, and prescription actives for a radiant, even complexion.</div><div class="svc-chip">Cosmetic</div></div>
+    <div class="svc-card rv" style="transition-delay:.20s"><div class="svc-ico">☀️</div><div class="svc-name">Vitiligo Treatment</div><div class="svc-desc">Comprehensive repigmentation therapy combining phototherapy, topicals, and surgical options as required.</div><div class="svc-chip">Medical</div></div>
+    <div class="svc-card rv" style="transition-delay:.25s"><div class="svc-ico">💆</div><div class="svc-name">Anti-Ageing & Aesthetics</div><div class="svc-desc">Botox, fillers, PRP, and non-surgical facial rejuvenation delivering natural, youthful-looking results.</div><div class="svc-chip">Cosmetic</div></div>
+    <div class="svc-card rv" style="transition-delay:.30s"><div class="svc-ico">⚡</div><div class="svc-name">Laser Therapies</div><div class="svc-desc">State-of-the-art laser solutions for hair removal, pigment correction, and precision skin resurfacing.</div><div class="svc-chip">Advanced</div></div>
+    <div class="svc-card rv" style="transition-delay:.35s"><div class="svc-ico">🦠</div><div class="svc-name">Warts & Skin Lesions</div><div class="svc-desc">Precise, minimally invasive removal of warts, skin tags, moles, and benign growths with fast recovery.</div><div class="svc-chip">Medical</div></div>
+    <div class="svc-card rv" style="transition-delay:.40s"><div class="svc-ico">🌺</div><div class="svc-name">Rosacea Management</div><div class="svc-desc">Expert redness control, trigger identification, and long-term protocols for consistently calm, clear skin.</div><div class="svc-chip">Medical</div></div>
+    <div class="svc-card rv" style="transition-delay:.45s"><div class="svc-ico">💇</div><div class="svc-name">Hair Loss Treatment</div><div class="svc-desc">Diagnosis and treatment of thinning, alopecia areata, and androgenetic hair loss using PRP and topicals.</div><div class="svc-chip">Medical + Cosmetic</div></div>
+    <div class="svc-card rv" style="transition-delay:.50s"><div class="svc-ico">🫧</div><div class="svc-name">Hives & Urticaria</div><div class="svc-desc">Rapid assessment and personalised management of chronic or acute urticaria to restore skin comfort.</div><div class="svc-chip">Medical</div></div>
+    <div class="svc-card rv" style="transition-delay:.55s"><div class="svc-ico">✨</div><div class="svc-name">Skin Cancer Screening</div><div class="svc-desc">Early detection and clinical assessment of suspicious moles and lesions with timely referral pathways.</div><div class="svc-chip">Preventive</div></div>
+  </div>
+</section>
+
+<!-- TREATMENTS -->
+<section id="treatments" class="section">
+  <div class="rv">
+    <div class="sec-label">Advanced Procedures</div>
+    <h2 class="sec-h">Signature <em>Treatment</em> Protocols</h2>
+  </div>
+  <div class="t-tabs">
+    <button class="t-tab on" data-idx="0">Chemical Peels</button>
+    <button class="t-tab" data-idx="1">Laser Toning</button>
+    <button class="t-tab" data-idx="2">Botox & Fillers</button>
+    <button class="t-tab" data-idx="3">PRP Therapy</button>
+    <button class="t-tab" data-idx="4">Mesotherapy</button>
+    <button class="t-tab" data-idx="5">Microdermabrasion</button>
+    <button class="t-tab" data-idx="6">Laser Hair Removal</button>
+  </div>
+  <div class="t-layout">
+    <div id="t-info" class="rv">
+      <h3 class="t-title">Chemical Peels</h3>
+      <p class="t-desc">A precisely calibrated chemical solution exfoliates and resurfaces the skin, revealing a brighter, smoother complexion. Highly effective for pigmentation, acne scars, uneven texture and early ageing.</p>
+      <div class="t-feats">
+        <div class="t-feat">Suitable for all Indian skin tones and types</div>
+        <div class="t-feat">Customised peel depth and formulation per patient</div>
+        <div class="t-feat">Minimal downtime — return to daily life quickly</div>
+        <div class="t-feat">Progressive visible improvement with each session</div>
+        <div class="t-feat">Often paired with topical regimens for best outcomes</div>
+      </div>
+    </div>
+    <div class="t-vis rv-r" id="t-visual">
+      <div class="t-box hi">🧪<div class="t-box-lbl">Solution Applied</div></div>
+      <div class="t-box">✨<div class="t-box-lbl">Skin Brightening</div></div>
+      <div class="t-box">🌸<div class="t-box-lbl">Pigmentation Fix</div></div>
+      <div class="t-box hi">💧<div class="t-box-lbl">Deep Hydration</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONDITIONS -->
+<section id="conditions" class="section">
+  <div class="rv" style="text-align:center;max-width:550px;margin:0 auto">
+    <div class="sec-label" style="justify-content:center">What We Treat</div>
+    <h2 class="sec-h">Conditions We <em>Specialise</em> In</h2>
+    <p class="sec-p">From everyday concerns to complex dermatological conditions — expert, personalised care for every patient.</p>
+  </div>
+  <div class="cond-grid">
+    <div class="cond-card rv"><span class="cond-emoji">🔴</span><div class="cond-name">Acne Vulgaris</div><div class="cond-sub">Breakouts, cysts, blackheads & whiteheads</div></div>
+    <div class="cond-card rv"><span class="cond-emoji">🟫</span><div class="cond-name">Melasma</div><div class="cond-sub">Brown patches from hormones or sun exposure</div></div>
+    <div class="cond-card rv"><span class="cond-emoji">🟡</span><div class="cond-name">Psoriasis</div><div class="cond-sub">Scaly, inflamed plaques on skin or scalp</div></div>
+    <div class="cond-card rv"><span class="cond-emoji">⚪</span><div class="cond-name">Vitiligo</div><div class="cond-sub">Loss of skin pigment in patches</div></div>
+    <div class="cond-card rv"><span class="cond-emoji">🔵</span><div class="cond-name">Eczema</div><div class="cond-sub">Dry, itchy, inflamed skin reactions</div></div>
+    <div class="cond-card rv"><span class="cond-emoji">🩷</span><div class="cond-name">Rosacea</div><div class="cond-sub">Chronic redness and visible blood vessels</div></div>
+    <div class="cond-card rv"><span class="cond-emoji">🟤</span><div class="cond-name">Hyperpigmentation</div><div class="cond-sub">Dark spots, sun damage, uneven tone</div></div>
+    <div class="cond-card rv"><span class="cond-emoji">💛</span><div class="cond-name">Warts & Growths</div><div class="cond-sub">Viral warts, skin tags, moles & lesions</div></div>
+    <div class="cond-card rv"><span class="cond-emoji">🌀</span><div class="cond-name">Hair Loss</div><div class="cond-sub">Alopecia, androgenetic thinning</div></div>
+    <div class="cond-card rv"><span class="cond-emoji">🔶</span><div class="cond-name">Urticaria / Hives</div><div class="cond-sub">Acute or chronic allergic rashes</div></div>
+    <div class="cond-card rv"><span class="cond-emoji">🟣</span><div class="cond-name">Acne Scars</div><div class="cond-sub">Boxcar, ice-pick and rolling scars</div></div>
+    <div class="cond-card rv"><span class="cond-emoji">🩺</span><div class="cond-name">Skin Cancer Screening</div><div class="cond-sub">Early detection of suspicious lesions</div></div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why" class="section">
+  <div class="rv" style="text-align:center;max-width:520px;margin:0 auto">
+    <div class="sec-label" style="justify-content:center">Why Choose Us</div>
+    <h2 class="sec-h">Where <em>Science</em> Meets Skin Care</h2>
+  </div>
+  <div class="why-grid">
+    <div class="why-card rv"><span class="wc-ico">🏆</span><div class="wc-title">Board-Certified Expertise</div><div class="wc-text">MD Dermatologist with fellowship training — qualifications that ensure safe, evidence-based care.</div></div>
+    <div class="why-card rv"><span class="wc-ico">🔬</span><div class="wc-title">Evidence-Based Protocols</div><div class="wc-text">Every treatment plan is grounded in current clinical research and global dermatology standards.</div></div>
+    <div class="why-card rv"><span class="wc-ico">💎</span><div class="wc-title">Personalised Approach</div><div class="wc-text">Your skin type, goals and lifestyle shape a completely custom plan — no cookie-cutter prescriptions.</div></div>
+    <div class="why-card rv"><span class="wc-ico">🕐</span><div class="wc-title">Flexible Timings</div><div class="wc-text">Two daily appointment slots six days a week — morning and evening to fit any schedule.</div></div>
+    <div class="why-card rv"><span class="wc-ico">💰</span><div class="wc-title">Accessible Pricing</div><div class="wc-text">Premium dermatology at an affordable ₹600 consultation fee with transparent treatment costs.</div></div>
+    <div class="why-card rv"><span class="wc-ico">📍</span><div class="wc-title">Central Location</div><div class="wc-text">Located in Abids — one of Hyderabad's most accessible and well-connected commercial areas.</div></div>
+    <div class="why-card rv"><span class="wc-ico">🛡️</span><div class="wc-title">Safe & Hygienic</div><div class="wc-text">Strict infection-control protocols and sterile single-use instruments at every procedure.</div></div>
+    <div class="why-card rv"><span class="wc-ico">📱</span><div class="wc-title">Easy WhatsApp Booking</div><div class="wc-text">Book instantly via WhatsApp or our form — quick confirmation within a few hours.</div></div>
+  </div>
+</section>
+
+<!-- BEFORE/AFTER GALLERY (new section) -->
+<section id="gallery" class="section">
+  <div class="gallery-intro">
+    <div class="rv-l">
+      <div class="sec-label">Results Gallery</div>
+      <h2 class="sec-h">Patient <em>Transformations</em></h2>
+      <p class="sec-p" style="max-width:400px">Real results from real patients. Every transformation reflects a personalised treatment protocol designed specifically for that individual's skin.</p>
+    </div>
+    <div class="rv-r" style="display:flex;flex-direction:column;gap:1rem">
+      <div style="background:var(--surface);border:1px solid var(--border2);border-radius:10px;padding:1.2rem;display:flex;align-items:center;gap:1rem">
+        <div style="font-size:1.8rem">⚠️</div>
+        <div>
+          <div style="font-size:.72rem;color:var(--g2);font-weight:500;margin-bottom:.2rem">Results Disclaimer</div>
+          <div style="font-size:.75rem;color:var(--txt3);line-height:1.65;font-weight:300">Individual results may vary. All treatments are performed by a certified MD Dermatologist with evidence-based protocols.</div>
+        </div>
+      </div>
+      <button class="btn-primary" onclick="goTo('#contact')">Book a Consultation →</button>
+    </div>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-card rv">
+      <div class="gallery-img">
+        <div class="gallery-img-ph"><span>📸</span><span style="font-size:.65rem;letter-spacing:.1em;text-transform:uppercase">Add Before/After Photo</span></div>
+      </div>
+      <div class="gallery-info">
+        <div class="gallery-condition">Acne & Post-Inflammatory Hyperpigmentation</div>
+        <div class="gallery-result">Significant clearance achieved with combination therapy</div>
+        <div class="gallery-sessions">4 sessions over 3 months</div>
+      </div>
+    </div>
+    <div class="gallery-card rv" style="transition-delay:.08s">
+      <div class="gallery-img">
+        <div class="gallery-img-ph"><span>📸</span><span style="font-size:.65rem;letter-spacing:.1em;text-transform:uppercase">Add Before/After Photo</span></div>
+      </div>
+      <div class="gallery-info">
+        <div class="gallery-condition">Melasma Treatment</div>
+        <div class="gallery-result">Visible reduction in pigmentation and even skin tone</div>
+        <div class="gallery-sessions">6 sessions with chemical peels + topicals</div>
+      </div>
+    </div>
+    <div class="gallery-card rv" style="transition-delay:.16s">
+      <div class="gallery-img">
+        <div class="gallery-img-ph"><span>📸</span><span style="font-size:.65rem;letter-spacing:.1em;text-transform:uppercase">Add Before/After Photo</span></div>
+      </div>
+      <div class="gallery-info">
+        <div class="gallery-condition">Hair Loss / Androgenetic Alopecia</div>
+        <div class="gallery-result">Noticeable hair regrowth with PRP + topical protocol</div>
+        <div class="gallery-sessions">Monthly sessions over 5 months</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GOOGLE REVIEWS BANNER (new) -->
+<div id="reviews-banner">
+  <div class="rb-left">
+    <div class="rb-icon">⭐</div>
+    <div>
+      <div class="rb-rating">5.0</div>
+      <div class="rb-stars">★★★★★</div>
+      <div class="rb-count">Google Rating · 100+ Reviews</div>
+    </div>
+    <div style="width:1px;height:60px;background:var(--border2);flex-shrink:0"></div>
+    <div>
+      <div style="font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--txt3);margin-bottom:.5rem">Verified on</div>
+      <div style="font-size:.85rem;color:var(--txt2);font-weight:400">Google Business Profile</div>
+      <a href="https://maps.app.goo.gl/rF29FKgdv8kM8CNF7" target="_blank" style="font-size:.68rem;color:var(--g1);text-decoration:underline;text-underline-offset:3px;margin-top:.2rem;display:block">View all reviews →</a>
+    </div>
+  </div>
+  <div class="rb-right">
+    <div class="review-mini">
+      <div class="rm-stars">★★★★★</div>
+      <div class="rm-text">"Dr. Shivani correctly diagnosed my stubborn melasma in the first consultation. Her treatment plan worked wonders."</div>
+      <div class="rm-author">— Priya R., Hyderabad</div>
+    </div>
+    <div class="review-mini">
+      <div class="rm-stars">★★★★★</div>
+      <div class="rm-text">"Best dermatologist in Hyderabad. The psoriasis management protocol she designed genuinely changed my quality of life."</div>
+      <div class="rm-author">— Vikram R., Jubilee Hills</div>
+    </div>
+    <div class="review-mini">
+      <div class="rm-stars">★★★★★</div>
+      <div class="rm-text">"I had severe cystic acne for years. Dr. Shivani's combination therapy transformed both my skin and my confidence."</div>
+      <div class="rm-author">— Rahul M., Abids</div>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="section">
+  <div class="rv" style="text-align:center;max-width:510px;margin:0 auto">
+    <div class="sec-label" style="justify-content:center">Patient Stories</div>
+    <h2 class="sec-h">Trusted by <em>Hundreds</em> of Patients</h2>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card rv"><div class="t-stars">★★★★★</div><span class="t-qmark">"</span><div class="t-text">Dr. Shivani correctly diagnosed my stubborn melasma in the first consultation. Her treatment plan worked wonders — my skin hasn't looked this clear in years.</div><div class="t-author"><div class="t-ava">👩</div><div><div class="t-name">Priya Reddy</div><div class="t-loc">Hyderabad</div></div></div></div>
+    <div class="testi-card rv" style="transition-delay:.06s"><div class="t-stars">★★★★★</div><span class="t-qmark">"</span><div class="t-text">I had severe cystic acne for years. Dr. Shivani's combination therapy transformed both my skin and my confidence. I wish I had visited sooner.</div><div class="t-author"><div class="t-ava">👨</div><div><div class="t-name">Rahul Mehta</div><div class="t-loc">Abids, Hyderabad</div></div></div></div>
+    <div class="testi-card rv" style="transition-delay:.12s"><div class="t-stars">★★★★★</div><span class="t-qmark">"</span><div class="t-text">The clinic is clean, professional and Dr. Shivani truly listens. My eczema has been in remission for six months — worth every visit.</div><div class="t-author"><div class="t-ava">👩</div><div><div class="t-name">Anjali Singh</div><div class="t-loc">Secunderabad</div></div></div></div>
+    <div class="testi-card rv" style="transition-delay:.04s"><div class="t-stars">★★★★★</div><span class="t-qmark">"</span><div class="t-text">Amazing experience with wart removal — quick, painless, and completely effective. Incredibly knowledgeable doctor with a wonderful calming approach.</div><div class="t-author"><div class="t-ava">👨</div><div><div class="t-name">Suresh Kumar</div><div class="t-loc">Koti, Hyderabad</div></div></div></div>
+    <div class="testi-card rv" style="transition-delay:.10s"><div class="t-stars">★★★★★</div><span class="t-qmark">"</span><div class="t-text">As a rosacea sufferer misdiagnosed twice before, Dr. Shivani identified my condition immediately. My skin is calmer than it has ever been.</div><div class="t-author"><div class="t-ava">👩</div><div><div class="t-name">Meera Joshi</div><div class="t-loc">Banjara Hills</div></div></div></div>
+    <div class="testi-card rv" style="transition-delay:.18s"><div class="t-stars">★★★★★</div><span class="t-qmark">"</span><div class="t-text">Best dermatologist in Hyderabad. The psoriasis management protocol she designed has genuinely changed my quality of life. Affordable and authentic care.</div><div class="t-author"><div class="t-ava">👨</div><div><div class="t-name">Vikram Rao</div><div class="t-loc">Jubilee Hills</div></div></div></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="section" style="background:var(--bg2)">
+  <div class="rv">
+    <div class="sec-label">Common Questions</div>
+    <h2 class="sec-h">Frequently Asked <em>Questions</em></h2>
+  </div>
+  <div class="faq-layout">
+    <div class="faq-list rv-l">
+      <div class="faq-item"><button class="faq-q">Do I need a referral to visit?<span class="faq-arr">▾</span></button><div class="faq-a"><div class="faq-a-in">No referral is needed. You can book directly via the form on this site, WhatsApp, or walk in subject to slot availability.</div></div></div>
+      <div class="faq-item"><button class="faq-q">What is the consultation fee?<span class="faq-arr">▾</span></button><div class="faq-a"><div class="faq-a-in">The consultation fee is ₹600 per visit. Treatment procedure costs are separate and will be discussed based on your specific needs.</div></div></div>
+      <div class="faq-item"><button class="faq-q">How do I book an appointment?<span class="faq-arr">▾</span></button><div class="faq-a"><div class="faq-a-in">Fill the appointment form below (details go to WhatsApp for instant confirmation) or tap the WhatsApp button to chat directly with the clinic.</div></div></div>
+      <div class="faq-item"><button class="faq-q">What should I bring to my first visit?<span class="faq-arr">▾</span></button><div class="faq-a"><div class="faq-a-in">Bring previous prescriptions, a list of current medications, and photos of your concern if possible. Come with a clean, product-free face for skin examination.</div></div></div>
+      <div class="faq-item"><button class="faq-q">Are cosmetic procedures safe here?<span class="faq-arr">▾</span></button><div class="faq-a"><div class="faq-a-in">All procedures are performed by Dr. Shivani using sterile single-use instruments and certified medical-grade products. Patient safety is the top priority.</div></div></div>
+      <div class="faq-item"><button class="faq-q">How many sessions will I need?<span class="faq-arr">▾</span></button><div class="faq-a"><div class="faq-a-in">It varies — some conditions resolve in 1–2 sessions; others like melasma or acne scars may need 4–8. Dr. Shivani gives a realistic timeline at your first visit.</div></div></div>
+      <div class="faq-item"><button class="faq-q">Are procedures painful?<span class="faq-arr">▾</span></button><div class="faq-a"><div class="faq-a-in">Most involve minimal discomfort. Topical anaesthetic is applied before laser or injection-based treatments. Patient comfort is always prioritised.</div></div></div>
+      <div class="faq-item"><button class="faq-q">Can I book for someone else?<span class="faq-arr">▾</span></button><div class="faq-a"><div class="faq-a-in">Yes, you can book on behalf of a family member or friend. Simply mention their name in the notes field when submitting the form.</div></div></div>
+    </div>
+    <div class="rv-r">
+      <div class="faq-aside">
+        <div class="fa-title">Still have questions?</div>
+        <div class="fa-text">Our team is happy to answer anything before your first visit. WhatsApp us for a quick response — usually within a few hours during clinic hours.</div>
+        <button class="btn-wa" onclick="openWA('I have a question about Dr. Shivani\'s Skin Clinic.')">💬 Chat on WhatsApp</button>
+        <div class="fa-hours">
+          <div class="fa-hours-title">Clinic Hours</div>
+          <div class="fa-hours-row">Mon – Sat: 10:00 AM – 2:00 PM<br>Mon – Sat: 4:00 PM – 6:00 PM<br><span style="color:var(--txt3);opacity:.5">Closed on Sundays</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <div class="rv" style="text-align:center;max-width:550px;margin:0 auto">
+    <div class="sec-label" style="justify-content:center">Get In Touch</div>
+    <h2 class="sec-h">Book Your <em>Consultation</em></h2>
+    <p class="sec-p">Fill the form and your details are sent directly to the clinic's WhatsApp for instant confirmation.</p>
+  </div>
+  <div class="contact-layout">
+    <div class="rv-l" style="display:flex;flex-direction:column;gap:.75rem">
+      <div class="ci"><div class="ci-ico">📍</div><div><span class="ci-label">Address</span><span class="ci-val">5-8-19, Fateh Sultan Lane, Mahesh Nagar<br>Abids, Hyderabad – 500 001</span></div></div>
+      <div class="ci"><div class="ci-ico">🕐</div><div><span class="ci-label">Timings</span><span class="ci-val">Mon – Sat: 10:00 AM – 2:00 PM<br>Mon – Sat: 4:00 PM – 6:00 PM</span></div></div>
+      <div class="ci"><div class="ci-ico">💰</div><div><span class="ci-label">Consultation Fee</span><span class="ci-val">₹600 per visit</span></div></div>
+      <div class="ci"><div class="ci-ico">🎓</div><div><span class="ci-label">Qualifications</span><span class="ci-val">MBBS, MD (DVL) · Fellowship Aesthetic Medicine & Cosmetology · PMUA Certified</span></div></div>
+      <button class="wa-big" onclick="openWA('Hello! I would like to book an appointment at Dr. Shivani\'s Skin Clinic.')">💬 Chat on WhatsApp Directly</button>
+      <p style="text-align:center;font-size:.67rem;color:var(--txt3);margin-top:-.2rem;letter-spacing:.04em">or use the form to pre-fill your details →</p>
+    </div>
+    <div class="rv-r">
+      <div class="form-panel">
+        <div class="form-title">Appointment Request</div>
+        <div id="form-body">
+          <div class="form-grid">
+            <div class="fg"><label>Full Name *</label><input type="text" id="f-name" placeholder="Your full name"></div>
+            <div class="fg"><label>Phone Number *</label><input type="tel" id="f-phone" placeholder="+91 XXXXX XXXXX"></div>
+            <div class="fg full"><label>Email Address</label><input type="email" id="f-email" placeholder="you@email.com"></div>
+            <div class="fg"><label>Preferred Date *</label><input type="date" id="f-date"></div>
+            <div class="fg"><label>Preferred Time *</label>
+              <select id="f-time">
+                <option value="">Select slot</option>
+                <option>10:00 AM – 11:00 AM</option>
+                <option>11:00 AM – 12:00 PM</option>
+                <option>12:00 PM – 1:00 PM</option>
+                <option>1:00 PM – 2:00 PM</option>
+                <option>4:00 PM – 5:00 PM</option>
+                <option>5:00 PM – 6:00 PM</option>
+              </select>
+            </div>
+            <div class="fg full"><label>Primary Concern *</label>
+              <select id="f-concern">
+                <option value="">Select your concern</option>
+                <option>Acne & Scarring</option>
+                <option>Pigmentation / Melasma</option>
+                <option>Eczema / Dermatitis</option>
+                <option>Psoriasis</option>
+                <option>Vitiligo</option>
+                <option>Anti-Ageing / Aesthetics</option>
+                <option>Laser Therapy</option>
+                <option>Hair Loss</option>
+                <option>Warts / Skin Lesions</option>
+                <option>Rosacea</option>
+                <option>Hives / Urticaria</option>
+                <option>Skin Cancer Screening</option>
+                <option>General Consultation</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="fg full"><label>Additional Notes</label><textarea id="f-notes" placeholder="Describe your concern, how long you've had it, or any treatments tried..."></textarea></div>
+            <button class="btn-submit" onclick="submitForm()">💬 Send via WhatsApp →</button>
+            <div class="form-note">Your details will be sent to the clinic's WhatsApp. Confirmation typically within a few hours.</div>
+          </div>
+        </div>
+        <div id="form-success">
+          <div class="fs-ico">✅</div>
+          <h3>Details Sent!</h3>
+          <p>Your request has been sent via WhatsApp. Please complete the message in the WhatsApp window. The clinic will confirm your slot shortly.</p>
+          <button class="btn-primary" style="margin:1.5rem auto 0;display:flex" onclick="resetForm()">Submit Another Request</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<section id="map-section" class="section" style="background:var(--bg2)">
+  <div class="rv">
+    <div class="sec-label">Find Us</div>
+    <h2 class="sec-h">Our <em>Location</em></h2>
+  </div>
+  <div class="map-layout">
+    <div class="map-cards rv-l">
+      <div class="map-card"><div class="mc-ico">📍</div><div><span class="mc-label">Address</span><span class="mc-val">5-8-19, Fateh Sultan Lane<br>Mahesh Nagar, Abids<br>Hyderabad, Telangana 500 001</span></div></div>
+      <div class="map-card"><div class="mc-ico">🚆</div><div><span class="mc-label">Nearest Landmark</span><span class="mc-val">Near Nampally Railway Station & Abids Bus Stop. Easily reachable from across Hyderabad.</span></div></div>
+      <div class="map-card"><div class="mc-ico">🚗</div><div><span class="mc-label">Getting Here</span><span class="mc-val">Street parking available nearby. Auto-rickshaws and cabs readily available at Abids junction.</span></div></div>
+      <div class="map-card"><div class="mc-ico">🕐</div><div><span class="mc-label">Clinic Hours</span><span class="mc-val">Mon – Sat: 10 AM–2 PM & 4–6 PM<br>Closed on Sundays</span></div></div>
+      <a href="https://maps.app.goo.gl/rF29FKgdv8kM8CNF7" target="_blank" rel="noopener" class="btn-dir">🗺 Open in Google Maps →</a>
+    </div>
+    <div class="map-embed rv-r">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3807.4764327862!2d78.46905!3d17.3832!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb970066ee1b29%3A0x81ee214562cd836c!2sDr%20Shivani&#39;s%20Skin%20Clinic!5e0!3m2!1sen!2sin!4v1680000000001!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Dr. Shivani's Skin Clinic"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <div class="foot-brand-name">Dr. Shivani's Skin Clinic</div>
+      <div class="foot-brand-sub">Dermatology & Aesthetics · Hyderabad</div>
+      <p class="foot-brand-p">Premium skin care and aesthetic medicine in the heart of Hyderabad. Your journey to healthier, radiant skin starts here.</p>
+      <div class="foot-socials">
+        <div class="foot-soc" onclick="openWA('Hello!')" title="WhatsApp">💬</div>
+        <div class="foot-soc" title="Instagram">📸</div>
+        <div class="foot-soc" title="Facebook">👍</div>
+      </div>
+    </div>
+    <div class="foot-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Acne Treatment</a></li>
+        <li><a href="#services">Melasma & Pigmentation</a></li>
+        <li><a href="#services">Laser Therapy</a></li>
+        <li><a href="#services">Anti-Ageing</a></li>
+        <li><a href="#services">Vitiligo Care</a></li>
+        <li><a href="#services">Hair Loss</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h4>Treatments</h4>
+      <ul>
+        <li><a href="#treatments">Chemical Peels</a></li>
+        <li><a href="#treatments">Botox & Fillers</a></li>
+        <li><a href="#treatments">PRP Therapy</a></li>
+        <li><a href="#treatments">Laser Toning</a></li>
+        <li><a href="#treatments">Mesotherapy</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h4>Clinic</h4>
+      <ul>
+        <li><a href="#about">About Dr. Shivani</a></li>
+        <li><a href="#gallery">Results Gallery</a></li>
+        <li><a href="#testimonials">Patient Reviews</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Book Appointment</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <p>© 2024 Dr. Shivani's Skin Clinic, Abids, Hyderabad. All rights reserved.</p>
+    <p>5-8-19, Fateh Sultan Lane, Mahesh Nagar, Abids, Hyderabad 500 001</p>
+  </div>
+</footer>
+
+<!-- FABS -->
+<div class="fab-group">
+  <button class="fab fab-wa" onclick="openWA('Hello! I would like to know more about Dr. Shivani\'s Skin Clinic.')">💬 <span class="fab-lbl">WhatsApp</span></button>
+  <button class="fab fab-book" onclick="goTo('#contact')">📅 <span class="fab-lbl">Book Now</span></button>
+</div>
+
+<script>
+/* CURSOR */
+(function(){
+  const dot=document.getElementById('cur-dot'),ring=document.getElementById('cur-ring');
+  let rx=window.innerWidth/2,ry=window.innerHeight/2,mx=rx,my=ry;
+  document.addEventListener('mousemove',e=>{
+    mx=e.clientX;my=e.clientY;
+    dot.style.left=mx+'px';dot.style.top=my+'px';
+  });
+  (function loop(){
+    rx+=(mx-rx)*.12;ry+=(my-ry)*.12;
+    ring.style.left=rx+'px';ring.style.top=ry+'px';
+    requestAnimationFrame(loop);
+  })();
+  const hoverEls='a,button,.svc-card,.testi-card,.why-card,.cond-card,.cred,.mini-cell,.map-card,.review-mini,.gallery-card,.faq-q,.t-box';
+  document.querySelectorAll(hoverEls).forEach(el=>{
+    el.addEventListener('mouseenter',()=>ring.classList.add('hover'));
+    el.addEventListener('mouseleave',()=>ring.classList.remove('hover'));
+  });
+})();
+
+/* NAV */
+const navbar=document.getElementById('navbar');
+window.addEventListener('scroll',()=>navbar.classList.toggle('scrolled',scrollY>60),{passive:true});
+
+/* MOBILE MENU */
+const ham=document.getElementById('ham'),mob=document.getElementById('mob-menu');
+function toggleMob(){const o=mob.classList.toggle('open');ham.classList.toggle('open',o);document.body.style.overflow=o?'hidden':''}
+function closeMob(){mob.classList.remove('open');ham.classList.remove('open');document.body.style.overflow=''}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMob()});
+
+/* SCROLL */
+function goTo(sel){const el=document.querySelector(sel);if(el){closeMob();setTimeout(()=>el.scrollIntoView({behavior:'smooth',block:'start'}),10)}}
+
+/* REVEAL */
+const rvObs=new IntersectionObserver(entries=>entries.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add('vis');rvObs.unobserve(e.target)}
+}),{threshold:.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.rv,.rv-l,.rv-r').forEach(el=>rvObs.observe(el));
+
+/* COUNTER */
+const cObs=new IntersectionObserver(entries=>entries.forEach(e=>{
+  if(!e.isIntersecting)return;
+  const el=e.target,target=+el.dataset.target;
+  if(!target){cObs.unobserve(el);return}
+  let n=0;const sup=el.querySelector('sup')?.outerHTML||'';
+  const iv=setInterval(()=>{n=Math.min(n+Math.ceil(target/50),target);el.innerHTML=n+sup;if(n>=target)clearInterval(iv)},1400/50);
+  cObs.unobserve(el);
+}),{threshold:.6});
+document.querySelectorAll('[data-target]').forEach(el=>cObs.observe(el));
+
+/* FAQ */
+document.querySelectorAll('.faq-q').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const item=btn.parentElement,wasOpen=item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
+    if(!wasOpen)item.classList.add('open');
+  });
+});
+
+/* TREATMENT TABS */
+const tData=[
+  {t:'Chemical Peels',d:'A precisely calibrated chemical solution exfoliates and resurfaces the skin, revealing a brighter, smoother complexion. Highly effective for pigmentation, acne scars, uneven texture and early ageing.',f:['Suitable for all Indian skin tones and types','Customised peel depth and formulation per patient','Minimal downtime — return to daily life quickly','Progressive visible improvement with each session','Often paired with topical regimens for best outcomes'],ic:[['🧪','Solution Applied'],['✨','Skin Brightening'],['🌸','Pigment Fix'],['💧','Deep Hydration']]},
+  {t:'Laser Toning',d:'Low-fluence Q-switched laser energy gently targets melanin to lighten pigmentation, reduce pore size and improve overall skin tone with zero downtime.',f:['Non-invasive and essentially pain-free','Safe for all Indian skin tones','Improves texture, tone and radiance','No recovery period required'],ic:[['⚡','Laser Pulse'],['🔬','Targeting'],['💫','Even Tone'],['🌟','Radiance']]},
+  {t:'Botox & Fillers',d:'Precise micro-injections of botulinum toxin and hyaluronic acid fillers smooth expression lines, restore volume, and sculpt facial contours for natural-looking results.',f:['Instant visible results','Zero scarring involved','Personalised dosing and placement','Long-lasting 6–12 months'],ic:[['💉','Injection'],['✨','Lines Gone'],['🌸','Volume Restore'],['💎','Natural Look']]},
+  {t:'PRP Therapy',d:'Platelet-Rich Plasma from your own blood is concentrated and re-injected to stimulate collagen, accelerate healing and revitalise hair follicles naturally.',f:['100% natural — your own blood','Minimal allergy risk','Effective for hair loss and skin glow','Results improve progressively'],ic:[['🩸','Blood Drawn'],['💊','PRP Made'],['🌿','Growth'],['🔬','Re-injected']]},
+  {t:'Mesotherapy',d:'Micro-injections deliver vitamins, minerals and hyaluronic acid into the skin\'s mesoderm layer to deeply hydrate, nourish and revitalise from within.',f:['Deep skin hydration','Improves elasticity and firmness','Reduces fine lines and dullness','Suitable for face, neck and scalp'],ic:[['💧','Hydrate'],['🌊','Nourish'],['✨','Glow'],['🌺','Firm']]},
+  {t:'Microdermabrasion',d:'Non-invasive mechanical exfoliation buffs away dead skin cells to reveal a fresher complexion and dramatically improve product absorption.',f:['Safe for sensitive skin','Immediate visible glow','Absolutely zero downtime','Improves product penetration'],ic:[['💆','Buffing'],['🌸','Exfoliation'],['✨','Instant Glow'],['💎','Smooth']]},
+  {t:'Laser Hair Removal',d:'State-of-the-art laser technology targets hair follicles to permanently reduce unwanted hair growth across face, arms, legs, underarms and more.',f:['Permanent reduction over sessions','Safe for all body areas','Suitable for Indian skin tones','Quick sessions, no downtime'],ic:[['⚡','Pulse'],['🔬','Follicle'],['🌿','Reduced'],['✨','Smooth']]},
+];
+document.querySelectorAll('.t-tab').forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    document.querySelectorAll('.t-tab').forEach(t=>t.classList.remove('on'));
+    tab.classList.add('on');
+    const d=tData[+tab.dataset.idx];
+    const info=document.getElementById('t-info');
+    info.style.opacity='0';info.style.transform='translateY(10px)';
+    setTimeout(()=>{
+      info.innerHTML=`<h3 class="t-title">${d.t}</h3><p class="t-desc">${d.d}</p><div class="t-feats">${d.f.map(f=>`<div class="t-feat">${f}</div>`).join('')}</div>`;
+      const vis=document.getElementById('t-visual');
+      vis.innerHTML=d.ic.map((ic,i)=>`<div class="t-box${i%2===0?' hi':''}">${ic[0]}<div class="t-box-lbl">${ic[1]}</div></div>`).join('');
+      info.style.transition='opacity .35s,transform .35s';
+      info.style.opacity='1';info.style.transform='none';
+    },200);
+  });
+});
+
+/* WHATSAPP */
+const WA='918790737474';
+function openWA(msg){window.open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`,'_blank','noopener')}
+
+/* FORM */
+function submitForm(){
+  const n=document.getElementById('f-name').value.trim();
+  const p=document.getElementById('f-phone').value.trim();
+  const e=document.getElementById('f-email').value.trim();
+  const d=document.getElementById('f-date').value;
+  const t=document.getElementById('f-time').value;
+  const c=document.getElementById('f-concern').value;
+  const notes=document.getElementById('f-notes').value.trim();
+  if(!n){alert('Please enter your name.');document.getElementById('f-name').focus();return}
+  if(!p){alert('Please enter your phone number.');document.getElementById('f-phone').focus();return}
+  if(!d){alert('Please select a preferred date.');document.getElementById('f-date').focus();return}
+  if(!t){alert('Please select a preferred time slot.');document.getElementById('f-time').focus();return}
+  if(!c){alert('Please select your primary concern.');document.getElementById('f-concern').focus();return}
+  const fd=new Date(d).toLocaleDateString('en-IN',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+  const msg=`🌿 *New Appointment Request*\n*Dr. Shivani's Skin Clinic – Abids, Hyderabad*\n\n👤 *Name:* ${n}\n📞 *Phone:* ${p}${e?'\n📧 *Email:* '+e:''}\n\n📅 *Date:* ${fd}\n🕐 *Time:* ${t}\n🩺 *Concern:* ${c}${notes?'\n📝 *Notes:* '+notes:''}\n\n_Sent via clinic website_`;
+  openWA(msg);
+  document.getElementById('form-body').style.display='none';
+  document.getElementById('form-success').style.display='block';
+}
+function resetForm(){
+  document.getElementById('form-body').style.display='';
+  document.getElementById('form-success').style.display='none';
+  ['f-name','f-phone','f-email','f-date','f-notes'].forEach(id=>document.getElementById(id).value='');
+  ['f-time','f-concern'].forEach(id=>document.getElementById(id).selectedIndex=0);
+}
+(()=>{const d=document.getElementById('f-date');if(d)d.min=new Date().toISOString().split('T')[0]})();
+</script>
+</body>
+</html>
